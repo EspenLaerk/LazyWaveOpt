@@ -1,0 +1,40 @@
+Timeout Evaluation Log - 2025-05-03T18:10:42.351435
+
+Genetic Algorithm Parameters:
+  POPULATION_SIZE: 50
+  NUM_GENERATIONS: 4
+  KEEP_PARENTS: 4
+  MUTATION_PROBABILITY: 0.15
+  CROSSOVER_PROBABILITY: 0.8
+  NUM_PROCESSES: 14
+
+Parameter Bounds:
+  bm_mass: [300.0, 800.0]
+  start_arc_length: [10.0, 200.0]
+  num_modules: [1.0, 20.0]
+
+Solution Time Statistics (excluding timeouts):
+  Count: 76
+  Min: 3.40 s
+  Mean: 14.63 s
+  Median: 11.60 s
+  90th percentile: 26.75 s
+  95th percentile: 33.42 s
+  99th percentile: 45.55 s
+  Max: 56.80 s
+
+Timeout Candidate Analysis:
+Label      Timeout(s)    Success  WallTime(h)     Sol/hr
+95th               34         72         0.03    2333.03
+95th+10%           37         73         0.03    2303.24
+99th               46         75         0.03    2193.34
+99th+10%           51         75         0.04    2107.73
+max                57         76         0.04    2043.32
+max+10%            63         76         0.04    2043.32
+
+Recommended Timeout: 34 s (label: 95th) - maximizes successful solutions per hour
+
+Justification:
+
+Timeout selection was based on maximizing the number of successful solutions per hour, given the batch processing logic. Analysis showed that most long evaluation times correspond to invalid or unphysical solutions, which are penalized in the fitness function and do not contribute to optimization. Therefore, a more aggressive timeout policy is justified. Several candidate timeouts were evaluated (95th, 99th percentiles, max, each with/without margin), and for each, the number of successful solutions, estimated wall-clock time, and solutions per hour were computed. The recommended timeout is the one that yields the highest rate of successful solutions per hour, balancing efficiency and solution quality. This approach is robust, data-driven, and academically justified for this application.
+
